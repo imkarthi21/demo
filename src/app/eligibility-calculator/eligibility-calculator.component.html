@@ -1,33 +1,6 @@
 <div class="main-block">
-    <header [ngClass]="['main-header',fixedHeader==true ? 'fixed-header' : '']">
-       <div class="open-container">
-            <nav class="nav-bar">
-                <div class="brand-logo-block">
-                    <a class="brand-link" [routerLink]="['']" title="Open Money"><img
-                    [ngClass]="['brand-logo',logoSize==true ? 'brand-logo-resize' : '']" 
-                    src="./assets/img/logo.png" alt="openmoney"></a>
-                </div>
-                <div class="toggle-block">
-                    <span *ngIf="closeToggler" (click)="toggle('close')" class="close-toggler">X </span>
-                    <img *ngIf="openToggler" class="toggler-icon" (click)="toggle('open')"
-                    src="./assets/img/toggler.svg"  alt="toggler">
-                </div>
-                <div class="nav-list-block">
-                    <ul class="nav-list">
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Products</a></li>
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Solutions</a> </li>
-                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Pricing</a></li>
-                    </ul>
-                    <div class="nav-list-btn">
-                        <a> <button class="btn-outline mr-20">Login</button> </a>
-                         <a> <button [ngClass]="['btn-gradient', btnShadow==true ? 'btn-shadow' : 'bno-noshadow']">Get
-Started</button> </a>
-                    </div>
-                </div>
-                <div class="clear-fix"></div>
-            </nav>
-       </div>
-    </header>
+   
+<app-header></app-header>
     <div class="main-calculator-block">
        <div class="open-container ">
           <div class="top-section">

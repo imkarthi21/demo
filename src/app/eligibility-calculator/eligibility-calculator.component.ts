@@ -1,4 +1,4 @@
-import { Component, OnInit ,HostListener} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-eligibility-calculator',
@@ -7,30 +7,23 @@ import { Component, OnInit ,HostListener} from '@angular/core';
 })
 export class EligibilityCalculatorComponent implements OnInit {
 
-  fixedHeader: boolean = false;
-  closeToggler: boolean = false;
-  openToggler: boolean = true;
-  btnShadow: boolean = true;
-  logoSize: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
   }
-  @HostListener('window:scroll') onScroll(e: Event): void {
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 50) {
-      this.fixedHeader = true;
-      this.btnShadow = false;
-      this.logoSize = true;
+
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");
+  }
+
+  onSlide(val, field, progress) {
+
+    (<HTMLInputElement>document.getElementsByClassName(field)[0]).textContent = this.numberWithCommas(val.target.value);
+
+    var pp = val.target.value / 300000 * 100;
+    (<HTMLInputElement>document.getElementsByClassName(progress)[0]).style.width = pp + "%";
 
 
-
-    } else {
-      this.fixedHeader = false;
-      this.btnShadow = true;
-      this.logoSize = false;
-
-    }
   }
   changeDropSelect(val) {
 
@@ -55,37 +48,4 @@ export class EligibilityCalculatorComponent implements OnInit {
 
 
   }
-  toggle(val) {
-    if (val == "open") {
-      this.closeToggler = true;
-      this.openToggler = false;
-
-      (<HTMLInputElement>document.getElementsByClassName('nav-list-block')[0]).style.display = "block";
-      (<HTMLInputElement>document.getElementsByClassName('main-header')[0]).style.background = "#fff";
-
-
-    }
-    else {
-      this.closeToggler = false
-      this.openToggler = true;
-      (<HTMLInputElement>document.getElementsByClassName('nav-list-block')[0]).style.display = "none";
-      (<HTMLInputElement>document.getElementsByClassName('main-header')[0]).style.background = "none";
-    }
-
-  }
-
-  numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");
-    }
-
-  onSlide(val, field, progress) {
-
-    (<HTMLInputElement>document.getElementsByClassName(field)[0]).textContent = this.numberWithCommas(val.target.value);
-
-    var pp = val.target.value / 300000 * 100;
-    (<HTMLInputElement>document.getElementsByClassName(progress)[0]).style.width = pp + "%";
-
-
-  }
-
 }
