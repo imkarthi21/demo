@@ -1,0 +1,209 @@
+<div class="main-block">
+    <header [ngClass]="['main-header',fixedHeader==true ? 'fixed-header' : '']">
+       <div class="open-container">
+            <nav class="nav-bar">
+                <div class="brand-logo-block">
+                    <a class="brand-link" [routerLink]="['']" title="Open Money"><img
+                    [ngClass]="['brand-logo',logoSize==true ? 'brand-logo-resize' : '']" 
+                    src="./assets/img/logo.png" alt="openmoney"></a>
+                </div>
+                <div class="toggle-block">
+                    <span *ngIf="closeToggler" (click)="toggle('close')" class="close-toggler">X </span>
+                    <img *ngIf="openToggler" class="toggler-icon" (click)="toggle('open')"
+                    src="./assets/img/toggler.svg"  alt="toggler">
+                </div>
+                <div class="nav-list-block">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Solutions</a> </li>
+                        <li class="nav-item"><a class="nav-link" [routerLink]="['']">Pricing</a></li>
+                    </ul>
+                    <div class="nav-list-btn">
+                        <a> <button class="btn-outline mr-20">Login</button> </a>
+                         <a> <button [ngClass]="['btn-gradient', btnShadow==true ? 'btn-shadow' : 'bno-noshadow']">Get
+Started</button> </a>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+            </nav>
+       </div>
+    </header>
+    <div class="main-calculator-block">
+       <div class="open-container ">
+          <div class="top-section">
+             <div class="small-round"><img src="./assets/img/blob-small.svg"  alt="circle"></div>
+             <div class="big-round"><img src="./assets/img/circle.svg"  alt="circle"></div>
+             <div class="row">
+                <div class="top-section-left">
+                   <h1>We Make It Super <br> Simple</h1>
+                   <div class="separation">
+                   </div>
+                   <div class="thumbnail-block">
+                      <img class="person-thumbnail" src="./assets/img/collect_img-video.png" alt="Person">
+                      <img class="doted-thumbnail" src="./assets/img/accounting_dots.svg" alt="Doted Thumbnail">
+                   </div>
+                </div>
+                <div class="top-section-right">
+                   <div class="row">
+                      <div class="calcular-block">
+                         <div class="calculator-containter">
+                            <div class="calculator-heading">
+                               Eligibility Calculator
+                            </div>
+                            <div class="ranger-block">
+                               <div class="file-block">
+                                  <div class="field-label">Monthly Income</div>
+                                  <div class="field-value">₹ <span class="field-sub-value1">0 </span></div>
+                                  <div class="slidecontainer">
+                                     <input type="range" class="slider mainSlider slider-range-min" min="0"
+                                        max="300000" value="0"
+                                        (change)="onSlide($event,'field-sub-value1','progressbar1')">
+                                     <div class="progressbar progressbar1"></div>
+                                  </div>
+                                  <div class="ranger-info-label"><span class="min-info-label">₹
+                                     1,00,000</span> <span class="max-info-label">₹ 3,00,000</span>
+                                  </div>
+                               </div>
+                               <div class="file-block">
+                                  <div class="field-label">Monthly Expense</div>
+                                  <div class="field-value">₹ <span class="field-sub-value2">0 </span></div>
+                                  <div class="slidecontainer">
+                                     <input type="range" class="slider mainSlider slider-range-min" min="0"
+                                        max="300000"
+                                        (change)="onSlide($event,'field-sub-value2','progressbar2')"
+                                        value="0">
+                                     <div class="progressbar progressbar2"></div>
+                                  </div>
+                               </div>
+                               <div class="file-block">
+                                  <div class="field-label">Repayment Tenure</div>
+                                  <div class="main-drop">
+                                     <div class="dropdown-select" (click)="changeDropSelect('')" data-id='0'>
+                                        <span class="tenure">8 Months</span> <span class="caret-icon"><img
+                                           src="./assets/img/caret.png"  alt="caret"></span>
+                                     </div>
+                                     <ul class="dropdown-list">
+                                        <li (click)="changeDropSelect('2 Months')">
+                                           2 Months
+                                        </li>
+                                        <li (click)="changeDropSelect('4 Months')">
+                                           4 Months
+                                        </li>
+                                        <li (click)="changeDropSelect('6 Months')">
+                                           6 Months
+                                        </li>
+                                        <li (click)="changeDropSelect('8 Months')">
+                                           8 Months
+                                        </li>
+                                     </ul>
+                                  </div>
+                               </div>
+                               <div class="file-block">
+                                  <div class="field-label">Do you have any existing loans? 
+                                     <label class="switch">
+                                        <input type="checkbox" checked>
+                                        <span class="switch-toogle round"></span>
+                                     </label>
+                                  </div>
+                               </div>
+                               <div class="file-block">
+                                  <div class="field-label">EMI of existing loan (optional)</div>
+                                  <input type="text" class="emi-field" value="" placeholder="₹ 3000">
+                               </div>
+                               <div>
+                               </div>
+                            </div>
+                            <img class="calcular-doted" src="./assets/img/accounting_dots.svg" alt="Doted Thumbnail">
+                         </div>
+                      </div>
+                      <div class="calcular-value-block">
+                         <div class="calcular-align">
+                            <div class="calculator-data-block">
+                               <div class="calculator-data-label">Loan Amount</div>
+                               <div class="calculator-data-value">₹ 100,000</div>
+                            </div>
+                            <div class="calculator-data-block">
+                               <div class="calculator-data-label">Your EMI will be</div>
+                               <div class="calculator-data-value">₹ 1,500</div>
+                            </div>
+                            <div class="calculator-data-btn">
+                               <button class="btn-white">GET MONEY</button>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="bottom-section">
+          <div class="open-container">
+             <div class="row change-direction">
+                <div class="bottom-section-left">
+                   <div>
+                      <div class="row">
+                         <div class="cards-left">
+                            <div class="single-card">
+                               <img src="./assets/img/Get_Paid_Instantly.png" alt="Get Paid Instantly">
+                               <div class="single-card-flex">
+                                  <h3 class="single-card-label">Quick cash disbursement</h3>
+                                  <p class="single-card-content">Get terms loans that your business needs
+                                     within 72 hrs
+                                  </p>
+                               </div>
+                            </div>
+                            <div class="single-card">
+                               <img src="./assets/img/Low_interest_rate.png" alt="Low interest rate">
+                               <div class="single-card-flex">
+                                  <h3 class="single-card-label">Low-interest rate</h3>
+                                  <p class="single-card-content">Achieve your financial goals with an amazing
+                                     interest rate starting at 13% per annum
+                                  </p>
+                               </div>
+                            </div>
+                            <div class="single-card">
+                               <img src="./assets/img/Secure_Payments.png" alt="Secure Payments">
+                               <div class="single-card-flex">
+                                  <h3 class="single-card-label">Zero Paperwork</h3>
+                                  <p class="single-card-content">Get started instantly by submitting only your
+                                     basic details & bank statements
+                                  </p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="cards-right">
+                            <div class="single-card">
+                               <img src="./assets/img/freelancer_feature.png" alt="Freelancer Feature">
+                               <div class="single-card-flex">
+                                  <h3 class="single-card-label">Ace your business finances</h3>
+                                  <p class="single-card-content">Manage banking, accounting & everything in
+                                     between, on one platform
+                                  </p>
+                               </div>
+                            </div>
+                            <div class="single-card">
+                               <img src="./assets/img/Covid.png" alt="Covid Loans">
+                               <div class="single-card-flex">
+                                  <h3 class="single-card-label">Loans to fight COVID-19</h3>
+                                  <p class="single-card-content">Zero EMI for first 3 months on
+                                     Back-to-Business loans of upto 1 lakh
+                                  </p>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+                <div class="bottom-section-right">
+                   <div class="bottom-section-content">
+                      <h2>Boost your business <br> with Open</h2>
+                      <div class="separation-btm"></div>
+                      <p>Get your hands on a term loan that’s <br> crafted for your business</p>
+                      <button class="btn-outline-lg">Get an Open Account</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
